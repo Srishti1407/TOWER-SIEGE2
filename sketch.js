@@ -86,6 +86,12 @@ function setup() {
   }
   function draw() {
     background(57,43,44);  
+    textSize(35);
+    fill(0);
+    text("DRAG AND RELEASE THE BALL TO DESTROY THE BOXES", 150, 385)
+    fill("orange");
+    textSize(20);
+    text("PRESS SPACE FOR A SECOND CHANCE !!",20,20)
     Engine.update(engine);
     drawSprites();
     ground1.display();
@@ -157,12 +163,7 @@ function setup() {
     image(ballp, ball.position.x, ball.position.y, 40, 40);
   }
 
-  textSize(35);
-  fill(0);
-  text("DRAG AND RELEASE THE BALL TO DESTROY THE BOXES", 150, 385)
-  fill("orange");
-  textSize(20);
-  text("PRESS SPACE FOR A SECOND CHANCE !!",20,20)
+  
   function mouseDragged(){
         Matter.Body.setPosition(this.ball, {x: mouseX , y: mouseY});
   }
