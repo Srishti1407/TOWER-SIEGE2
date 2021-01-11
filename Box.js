@@ -13,7 +13,7 @@ class Box {
   }
   display() {
       var pos = this.body.position;
-      var angle = this.angle;
+      var angle = this.body.angle;
       push();
       if (this.body.speed < 3) {
           rectMode(CENTER);
