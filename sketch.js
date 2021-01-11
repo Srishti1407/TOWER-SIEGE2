@@ -7,9 +7,15 @@ var ground1, ground2;
 var box1, box2, box3, box4, box5, box6, box7, box8, box9, box10, box11, box12, box13, box14, box15, box16, box17, box18, box19, box20, box21, box22, box23, box24, box25, box26, box27, box28, box29, box30, box31, box32, box33, box34, box35, box36, box37, box38, box39, box40, box41, box42, box43, box44, box45, box46, box47, box48, box49, box50, box51, box52, box53, box54, box55, box56, box57, box58, box59;
 var ball, ballp;
 var slingshot;
+var score=0;
+var bg = "night pic.jpg";
+var backgroundImg;
 function preload(){
   ballp = loadImage("polygon.png");
+  getBackgroundImg();
+  backgroundImg = loadImage("download.jpg");
 }
+
 function setup() {
     createCanvas(900,400);
     engine = Engine.create();
@@ -85,13 +91,16 @@ function setup() {
     
   }
   function draw() {
-    background(57,43,44);  
+     if(backgroundImg) {
+          background(backgroundImg);
+      }
     textSize(35);
     fill(0);
     text("DRAG AND RELEASE THE BALL TO DESTROY THE BOXES", 150, 385)
     fill("orange");
     textSize(20);
     text("PRESS SPACE FOR A SECOND CHANCE !!",20,20)
+   text("SCORE:"+score,750,40);
     Engine.update(engine);
     drawSprites();
     ground1.display();
@@ -158,6 +167,59 @@ function setup() {
       box50.display();
       box51.display();
 
+      //calling score function
+      box1.score();
+      box2.score();
+      box3.score();
+      box4.score();
+      box5.score();
+      box6.score();
+      box7.score();
+      box8.score();
+      box9.score();
+      box10.score();
+      box11.score();
+      box12.score();
+      box13.score();
+      box14.score();
+      box15.score();
+      box16.score();
+      box17.score();
+      box18.score();
+      box19.score();
+      box20.score();
+      box21.score();
+      box22.score();
+      box23.score();
+      box24.score();
+      box25.score();
+      box26.score();
+      box27.score();
+      box28.score();
+      box29.score();
+      box30.score();
+      box31.score();
+      box32.score();
+      box33.score();
+      box34.score();
+      box35.score();
+      box36.score();
+      box37.score();
+      box38.score();
+      box39.score();
+      box40.score();
+      box41.score();
+      box42.score();
+      box43.score();
+      box44.score();
+      box45.score();
+      box46.score();
+      box47.score();
+      box48.score();
+      box49.score();
+      box50.score();
+      box51.score();
+
     slingshot.display();
     imageMode(CENTER);
     image(ballp, ball.position.x, ball.position.y, 40, 40);
@@ -177,5 +239,17 @@ function setup() {
      }
  }
 
-
+ async function getBackgroundImg() {
+     var response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Kolkata");
+     var responseJSON = await response.json();
+     var date = responseJSON.datetime;
+     var hour = date.slice(11, 13);
+     if(hour>=06 && hour<=18){
+         bg = "download.jpg"
+     } else {
+         bg = "night pic.jpg"
+     }
+     backgroundImg = loadImage(bg);
+     console.log(backgroundImg);
+   }
 
